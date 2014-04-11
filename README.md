@@ -1,4 +1,4 @@
-upload-image
+Uploading and cropping images.
 ============
 
-uploading image in MongoDB and cropping image
+Uploading and cropping images.
