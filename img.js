@@ -75,7 +75,15 @@ var upload = function(req, res, next){
             function (callback) {
                 fs.unlink(file.path);
                 callback(null)
+            },
+            function(callback){
+                var image = new Image({ name: iName, url: path });
+                image.save(callback)
+            },
+            function(callback){
+                res.redirect('/img/' + iName);
             }
+
         ], function(err, result){
             if (err) return next(err);
 
