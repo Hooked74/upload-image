@@ -104,7 +104,24 @@ var upload = function(req, res, next){
 };
 
 var render = function(req, res, next){
+    try {
+        var id = mongoose.Types.ObjectId(req.params.url);
+        var query = { $or: [ { name: req.params.url }, { _id: id } ] };
+    } catch (e){
+        var query = { name: req.params.url };
+    }
 
+    Image.findOne(query, function(err, record){
+        if (err) return next(err);
+        if (!record) return next("Record was not found");
+
+        res.send("<figure style='text-align: center;'>"
+            + "<a href='" + record.url + "'>"
+            + "<img width='300' src='" + record.url + "' alt='" + record.name + "'/>"
+            + "</a>"
+            + "<figcaption>" + record.name + "</figcaption>"
+            + "</figure>");
+    })
 };
 
 var crop = function(req, res, next) {
