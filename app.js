@@ -25,7 +25,6 @@ app.route('/')
     .post(routing.upload);
 
 app.get('/img/:url', routing.getImg);
-app.get('/img/:url/?crop&x1=:x1&y1=:y1&x2=:x2&y2=:y2', routing.cropImg);
 app.get('/all', routing.allImg);
 
 app.get('*', function(req, res, next){

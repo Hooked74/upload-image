@@ -14,6 +14,13 @@ var Image = new Schema({
     created:{
         type: Date,
         default: Date.now
+    },
+    size:{
+        type: String,
+        required: true
+    },
+    cropUrl:{
+        type: String
     }
 });
 
