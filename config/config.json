@@ -1,0 +1,15 @@
+{
+  "port": 3000,
+  "mongoose": {
+    "uri": "mongodb://localhost:9999/upload_images",
+    "options": {
+      "user": "root",
+      "pass": "YjgHOqFIU8hPgihoZvGk1hZQIcGh",
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  }
+}
