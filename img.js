@@ -27,7 +27,22 @@ var upload = function(req, res, next){
     }
 
     function analysisPartForm (part) {
-
+        async.waterfall([
+            function (callback) {
+                var err = part.name == 'image' ? null : "title";
+                callback(err);
+            },
+            function (callback) {
+                var err = part.headers['content-type'].split('/')[0] != 'image' ? "Unknown type" : null;
+                callback(err);
+            },
+            function (callback) {
+                var err = part.byteCount > maxSize ? "Max size is 1.5Mb" : null;
+                callback(err);
+            },
+        ], function(err, result){
+            if (err && err !== "title") return req.emit('error', err);
+        })
     }
 
     function getTitle(name, value) {
