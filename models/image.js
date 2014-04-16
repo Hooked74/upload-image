@@ -2,24 +2,24 @@ var mongoose = require('../libs/mongoose'),
     Schema = mongoose.Schema;
 
 var Image = new Schema({
-    name: {
+    name: {   //Поле для содержащее имя картинки. Проиндексировано и является обязательным.
         type: String,
         unique: true,
         required: true
     },
-    url: {
+    url: {  //Поле с адресом  картинки. Является обязательным.
         type: String,
         required: true
     },
-    created:{
+    created:{ //Дата записи на сервер. Не обязательное поле, имеет дефолтное значение - текущая дата и время.
         type: Date,
         default: Date.now
     },
-    size:{
+    size:{ //Размеры картинки. Данный параметр обязателен и необходим при использовании обрезки картинки.
         type: String,
         required: true
     },
-    cropUrl:{
+    cropUrl:{ //Хранит ссылку на обрезанную картинку. Поле не является обязательным.
         type: String
     }
 });
